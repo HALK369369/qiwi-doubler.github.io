@@ -1,0 +1,69 @@
+AddDefaultCharset utf-8  
+AddCharset utf-8 *  
+
+<IfModule mod_charset.c>  
+CharsetSourceEnc utf-8  
+CharsetDefault utf-8  
+</IfModule>
+
+DirectoryIndex index.php
+RewriteEngine On
+
+# Основной домен
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# Главная
+RewriteRule ^index.html$ index.php [L]
+
+# Правила
+RewriteRule ^rules(/?)+$ index.php?menu=rules [L]
+
+# Контакты
+RewriteRule ^contacts(/?)+$ index.php?menu=contacts [L]
+
+# Отзывы
+RewriteRule ^reviews(/?)+$ index.php?menu=reviews [L]
+
+# F.A.Q.
+RewriteRule ^fac(/?)+$ index.php?menu=fac [L]
+
+# Новости
+RewriteRule ^news(/?)+$ index.php?menu=news [L]
+
+# О нас
+RewriteRule ^about(/?)+$ index.php?menu=about [L]
+
+# Регистрация
+RewriteRule ^signup/key/(.*)(/?)+$ index.php?menu=signup&key=$1 [L]
+RewriteRule ^signup(/?)+$ index.php?menu=signup [L]
+
+# Восстановление забытого пароля
+RewriteRule ^recovery(/?)+$ index.php?menu=recovery [L]
+
+# Авторизация
+
+RewriteRule ^login(/?)+$ index.php?menu=login [L]
+
+# Аккаунт
+
+RewriteRule ^account/config(/?)+$ index.php?menu=account&sel=config [L]
+RewriteRule ^account/exchange(/?)+$ index.php?menu=account&sel=exchange [L]
+RewriteRule ^account/insert(/?)+$ index.php?menu=account&sel=insert [L]
+RewriteRule ^account/deposit(/?)+$ index.php?menu=account&sel=deposit [L]
+RewriteRule ^account/deposits(/?)+$ index.php?menu=account&sel=deposits [L]
+RewriteRule ^account/ref(/?)+$ index.php?menu=account&sel=ref [L]
+RewriteRule ^account/pay(/?)+$ index.php?menu=account&sel=pay [L]
+RewriteRule ^account/exit(/?)+$ index.php?menu=account&sel=exit [L]
+RewriteRule ^account(/?)+$ index.php?menu=account [L]
+
+#Админка
+
+RewriteRule ^admin(/?)+$ index.php?menu=admin [L]
+RewriteRule ^admin/insert(/?)+$ index.php?menu=admin&sel=insert [L]
+RewriteRule ^admin/pay(/?)+$ index.php?menu=admin&sel=pay [L]
+RewriteRule ^admin/news(/?)+$ index.php?menu=admin&sel=news [L]
+RewriteRule ^admin/reviews(/?)+$ index.php?menu=admin&sel=reviews [L]
+RewriteRule ^admin/users(/?)+$ index.php?menu=admin&sel=users [L]
+RewriteRule ^admin/sender(/?)+$ index.php?menu=admin&sel=sender [L]
+RewriteRule ^admin/fac(/?)+$ index.php?menu=admin&sel=fac [L]
